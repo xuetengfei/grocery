@@ -14,10 +14,10 @@ function example() {
     return;
   } catch (e) {
     console.log(e);
-    console.log('Will finally run?');
+    console.log("Will finally run?");
     // throw e;
   } finally {
-    console.log('FINALLY RUNS!');
+    console.log("FINALLY RUNS!");
   }
   console.log("This shouldn't be called eh?");
 }
