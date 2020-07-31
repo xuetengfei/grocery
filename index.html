@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 50000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        background: #ffffff;
+        overflow: auto;
+        width: auto;
+        padding: 0.2em 0.6em;
+      "
+    >
+      <pre style="margin: 0; line-height: 125%;">  React.useEffect(() =&gt; {
+    console.log(<span style="color: #0000FF">&#39;Inside useEffect...&#39;</span>);
+    setMyState(<span style="color: #0000FF">1</span>);
+    setMyState(prevState =&gt; prevState + <span style="color: #0000FF">1</span>);
+    setMyState(<span style="color: #0000FF">3</span>);
+    setMyState(<span style="color: #0000FF">4</span>);
+    setMyState(<span style="color: #0000FF">5</span>);
+    setBooleanState(<span style="color: #000080; font-weight: bold">true</span>);
+  }, []);
+</pre>
+    </div>
+  </body>
+  <script>
+    window.addEventListener(
+      "scroll",
+      deBounce(() => {
+        console.log(`window is scroll`);
+      }, 500)
+    );
+    function deBounce(fn, wait) {
+      let timer = null;
+      return (...args) => {
+        timer && clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn.apply(this, args);
+        }, wait);
+      };
+    }
+
+    function throttle(callback, interval) {
+      let enableCall = true;
+      return (...args) => {
+        if (!enableCall) return;
+        enableCall = false;
+        callback.apply(this, args);
+        setTimeout(() => (enableCall = true), interval);
+      };
+    }
+    function helloFromThrottle() {
+      console.log("Jesus is saying hi!!!");
+    }
+    const foo = throttle(helloFromThrottle, 5000);
+    foo();
+  </script>
+</html>

@@ -1,0 +1,24 @@
+###
+
+GET http://localhost:8000/api/balance/account/bank/refresh/Securitybank/0000014676663
+
+
+###
+
+GET http://localhost:8000/api/balance/account/bank/refresh/OCBC_HK/503398851301
+
+###
+GET http://localhost:8000/api/balance/account/bank/bill/download?transactionType=503398851301&startDate=2019-10-26&endDate=2019-11-26&bankName=OCBC_HK
+
+http://192.168.1.129:8098/
+
+
+
+### 
+curl https://jsonplaceholder.typicode.com/posts
+
+###
+http://api.k780.com/?app=finance.rate&scur=USD&tcur=CNY&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4
+
+###
+curl http://localhost:8000/mock/setup/exchange_rate/page
