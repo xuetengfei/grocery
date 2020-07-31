@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-echo "----- Begin -----"
+echo "----- Start -----"
 git pull
 git add .
 git commit -m "$(date | md5 )"
