@@ -1,14 +1,9 @@
 #!/bin/bash -e
 
-echo "-------Auto Git Begin-------"
+echo "----- Begin -----"
 git pull
 git add .
-now="$(date +"%Y-%m-%d %H:%M")"
-
-Message="$(date | md5 )"
-
-git commit -m "$Message"
-echo "****************** commit is:$1 ${now} ***********"
+git commit -m "$(date | md5 )"
 git push origin master
-echo "--------End--------"
+echo "----- End -----"
 
