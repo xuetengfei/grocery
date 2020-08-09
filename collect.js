@@ -2,6 +2,41 @@ const log = (desc, what) => {
   what ? console.log(`${desc} is:`, what) : console.log(desc);
 };
 const divider = () => console.log('====================================');
+
+{
+  //  var exp = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/
+  //  const reg1 = /^\d+(\.\d{0,2})?$/
+  //  const reg = /^(\d|([1-9]\d+))(\.\d{0,2})?$/
+  //  const reg = /^(([1-9]{1}\d*)|0)?$/
+  //  const reg0 = /^\d+$/
+  // const reg = /^(([1-9]{1}\d*)|0)(\.\d{1,2})?$/
+  // let reg20
+  // reg20 = /^(/[1-9]/{1}/\d/*)\.{0,1}/\d/{0,2}$/
+  // reg20 = /^((/[1-9]/{1}/\d/*))(\./\d/{1,2})?$/
+  //  console.log(reg20.test(‘500’))
+  //  console.log(reg20.test(‘5000.0’))
+  //  console.log(reg20.test(‘5000.00’))
+  // console.log(reg20.test(‘5000..0’))
+  //  console.log(reg20.test(‘5000..011’))
+  // let reg3
+  // reg3 = /^/[0-9]
+  // console.log(reg3.*test*(‘60210840607793153’))
+  // console.log(reg3.*test*(1))
+}
+
+return;
+{
+  a = Array.from(
+    '1234',
+    function (item) {
+      return item * this.multiply;
+    },
+    { multiply: 2 },
+  );
+  console.log(a);
+  // will return : [ 2, 4, 6, 8 ]
+}
+return;
 /* ====================================================== */
 /* ====================================================== */
 /* ====================================================== */
