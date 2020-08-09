@@ -1,8 +1,19 @@
-const log = (desc, what) => {
-  what ? console.log(`${desc} is:`, what) : console.log(desc);
-};
-const divider = () => console.log('====================================');
+const { divider, log } = require('./utils');
+{
+  /*
+Array-like objects
+https://2ality.com/2013/05/quirk-array-like-objects.html
+JavaScript quirks
+Array-like objects
+has: indexed access to elements and the property length that tells us how many elements the object has.
+does not have: array methods such as push, forEach and indexOf.
+Two examples of array - like objects is
+document.getElementsByClassName()
+special variable arguments
 
+*/
+}
+return;
 {
   //  var exp = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/
   //  const reg1 = /^\d+(\.\d{0,2})?$/
@@ -87,33 +98,6 @@ return;
   // expected output: 3
   console.log(proxy1(1, 2));
   // expected output: 30
-}
-
-return;
-{
-  /* ====================================================== */
-  /* ====================================================== */
-  /* ====================================================== */
-  /* ====================================================== */
-  /* =============     event loop     ===================== */
-  /* ====================================================== */
-  /* ====================================================== */
-  /* ====================================================== */
-  /* ====================================================== */
-
-  setTimeout(() => {
-    log('timer1');
-    Promise.resolve().then(function () {
-      log('promise1');
-    });
-  }, 0);
-
-  setTimeout(() => {
-    log('timer2');
-    Promise.resolve().then(function () {
-      log('promise2');
-    });
-  }, 0);
 }
 
 // return; // run code stop in here
