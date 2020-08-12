@@ -1,7 +1,47 @@
 const { divider, log } = require('./utils');
 
 {
-  // [Haskell-like composition in JavaScript | by Dimitri Nikogosov | DailyJS | Jul, 2020 | Medium](https://medium.com/dailyjs/haskell-like-composition-in-javascript-6142a2a82821)
+  // 1
+  const twice = {
+    apply(target, ctx, args) {
+      console.log('args: ', args);
+      console.log('ctx: ', ctx);
+      console.log('target: ', target);
+      return Reflect.apply(...arguments) * 2;
+    },
+  };
+  function sum(left, right) {
+    return left + right;
+  }
+  const proxy2 = new Proxy(sum, twice);
+  log(proxy2(1, 2)); // 6
+  log(proxy2.call(null, 5, 6)); // 22
+  log(proxy2.apply(null, [7, 8])); // 30
+  divider();
+}
+
+{
+  // 2
+  const wrap = obj => {
+    return new Proxy(obj, {
+      get(target, propKey) {
+        console.log(`Reading property "${propKey}"`);
+        return target[propKey];
+      },
+    });
+  };
+
+  const object = { message: 'hello world' };
+  const wrapped = wrap(object);
+  console.log(wrapped.message);
+
+  // >> Reading property "message"
+  // >> hello world
+}
+{
+  // 3
+  // [Haskell-like composition in JavaScript | by Dimitri Nikogosov | DailyJS | Jul, 2020 | Medium]
+  // (https://medium.com/dailyjs/haskell-like-composition-in-javascript-6142a2a82821)
   const composable = {
     get: function (target, prop) {
       if (prop in target) {
@@ -9,19 +49,20 @@ const { divider, log } = require('./utils');
       } else {
         const entity = eval(prop);
         if (typeof entity === 'function' && typeof target === 'function') {
-          return (...args) => target(entity(...args));
+          return new Proxy((...args) => target(entity(...args)), composable);
         }
       }
     },
   };
-  const double = new Proxy(function (x) {
+  const id = new Proxy(x => x, composable);
+  // It works with function declaration syntax
+  function double(x) {
     return x * 2;
-  }, composable);
-  const addThree = new Proxy(x => x + 3, composable);
-  const f = double.addThree.double;
-  // console.log('f: ', f);
-  //   const res = f(1.5);
-  //   log(res);
+  }
+  // It works with arrow functions
+  const addThree = x => x + 3;
+  const f = id.double.addThree.double;
+  console.log(' f: ', f(1.5));
 }
 
 {

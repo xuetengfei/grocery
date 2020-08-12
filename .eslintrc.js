@@ -17,5 +17,20 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
-  rules: {},
+  rules: {
+    'spaced-comment': [
+      'always',
+      {
+        line: {
+          markers: ['/'],
+          exceptions: ['-', '+'],
+        },
+        block: {
+          markers: ['!'],
+          exceptions: ['*'],
+          balanced: true,
+        },
+      },
+    ],
+  },
 };
