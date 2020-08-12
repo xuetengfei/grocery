@@ -1,0 +1,24 @@
+{
+  "name": "022-grocery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "0-white.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuetengfei/grocery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuetengfei/grocery/issues"
+  },
+  "homepage": "https://github.com/xuetengfei/grocery#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "eslint": "^7.6.0"
+  }
+}
