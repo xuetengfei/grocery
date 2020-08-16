@@ -1,4 +1,4 @@
-const { divider, log } = require('./utils');
+const { log } = require('./utils');
 
 const sum = (x, y, z) => x + y + z;
 
@@ -10,7 +10,8 @@ const sum = (x, y, z) => x + y + z;
   log(curry(sum)(1)(2)(3)); // 6
 }
 
-divider();
+/* ============================================== */
+
 {
   const curry = fn =>
     fn.length === 0 ? fn() : (...args) => curry(fn.bind(null, ...args));
