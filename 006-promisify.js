@@ -30,7 +30,7 @@ const promisify = func => (...args) =>
     },
   });
   (async () => {
-    const res = await fsp.readFile('./1.md', 'utf-8');
+    const res = await fsp.readFile('./assets/test.md', 'utf-8');
     console.log('res: ', res); // res:  just for test
   })();
 }
