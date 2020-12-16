@@ -1,7 +1,6 @@
 /* 
     [Reflect - ECMAScript 6入门](https://es6.ruanyifeng.com/#docs/reflect)
     从Reflect对象上可以拿到语言内部的方法
-
 Reflect.apply(target, thisArg, args)
 Reflect.construct(target, args)
 Reflect.get(target, name, receiver)
