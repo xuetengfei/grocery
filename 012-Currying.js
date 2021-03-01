@@ -1,7 +1,7 @@
 const { log } = require('./utils');
 
 {
-  // add(2)(3) implementation in JS.
+  // add(2)(3) implementation in JS
   function add(x) {
     return function (y) {
       return x + y;
