@@ -3,6 +3,7 @@
 ## chmod +x auto.sh
 
 echo "-------Auto Git Begin-------"
+git config --global --unset http.proxy
 git config pull.rebase false
 git pull
 git add .
