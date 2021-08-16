@@ -1,20 +1,5 @@
 const { divider, log } = require('./utils');
 {
-  /*
-Array-like objects
-https://2ality.com/2013/05/quirk-array-like-objects.html
-JavaScript quirks
-Array-like objects
-has: indexed access to elements and the property length that tells us how many elements the object has.
-does not have: array methods such as push, forEach and indexOf.
-Two examples of array - like objects is
-document.getElementsByClassName()
-special variable arguments
-
-*/
-}
-return;
-{
   //  var exp = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/
   //  const reg1 = /^\d+(\.\d{0,2})?$/
   //  const reg = /^(\d|([1-9]\d+))(\.\d{0,2})?$/
