@@ -21,5 +21,8 @@
     "@typescript-eslint/parser": "^3.9.0",
     "eslint": "^7.6.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
