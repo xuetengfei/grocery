@@ -27,8 +27,11 @@ Object.assign(Number.prototype, {
     for (let i = this; i--; ) yield this - i;
   },
 });
-// console.log([...10]);
-// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log([...10]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+Array(10)
+  .fill(null)
+  .map((v, i) => i + 1);
 
 {
   let Pricestrategy = new Map();
