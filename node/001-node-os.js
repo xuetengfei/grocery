@@ -1,5 +1,9 @@
-// const os = require('os');
-// console.log('os', os);
-
+const os = require('os');
 const path = require('path');
-console.log('path', path);
+const { log } = require('../utils');
+
+log(os.cpus());
+log(os.cpus().length);
+log(os.userInfo());
+
+// console.log('path', path);
