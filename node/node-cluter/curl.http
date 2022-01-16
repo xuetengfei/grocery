@@ -1,2 +1,4 @@
 #
 GET http://localhost:3200
+
+# loadtest -n 10000 -c 100 http://localhost:3200
