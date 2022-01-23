@@ -34,8 +34,9 @@ router.get('/', function (req, res, next) {
   });
 });
 
-// [cb0, cb1, cb2] 一组回调函数可以处理路由
-router.get('/name', [cb0, cb1, cb2]);
+/* [cb0, cb1, cb2] 一组回调函数可以处理路由 */
+const callBackStuff = [cb0, cb1, cb2];
+router.get('/name', callBackStuff);
 
 router.get('/type/:id', [fn1], function (req, res, next) {
   res.status(200).json({
@@ -43,5 +44,26 @@ router.get('/type/:id', [fn1], function (req, res, next) {
     id: req.params.id,
   });
 });
+
+router.get('/hair/:color', function (req, res, next) {
+  if (req.params.color === 'special') {
+    /* 调用next('route')以将控制权传递给下一个路由,相同的路由 */
+    next('route');
+  } else {
+    // next();
+    res.status(200).json({
+      success: 'ok',
+      color: 'normal',
+    });
+  }
+});
+router.get('/hair/:color', [], function (req, res, next) {
+  res.status(200).json({
+    success: 'ok',
+    color: 'special',
+  });
+});
+
+// router.get('/xx', [], function (req, res, next) {});
 
 module.exports = router;

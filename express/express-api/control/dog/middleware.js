@@ -9,12 +9,12 @@ exports.fn1 = function fn(req, res, next) {
 };
 
 exports.cb0 = function (req, res, next) {
-  console.log('CB0');
+  console.log('Request URL:CB0', req.originalUrl);
   next();
 };
 
 exports.cb1 = function (req, res, next) {
-  console.log('CB1');
+  console.log('Request Type:CB1', req.method);
   next();
 };
 
