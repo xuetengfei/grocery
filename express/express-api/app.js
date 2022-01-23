@@ -1,11 +1,23 @@
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
 const { cookieValidator } = require('./utils');
 
 const app = express();
 const dog = require('./control/dog');
 
 /* 第三方的配置 */
+// logger
+var accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'log/access.log'),
+  {
+    flags: 'a',
+    encoding: 'utf8',
+  },
+);
+app.use(morgan('combined', { stream: accessLogStream }));
 // 解析cookie
 app.use(cookieParser());
 
