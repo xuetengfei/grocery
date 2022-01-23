@@ -1,0 +1,19 @@
+{
+  "name": "express-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dayjs": "^1.10.7",
+    "express": "^4.17.2",
+    "loadsh": "^0.0.4",
+    "nodemon": "^2.0.15"
+  }
+}

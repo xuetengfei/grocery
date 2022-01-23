@@ -1,0 +1,47 @@
+const express = require('express');
+const _ = require('lodash');
+const dayjs = require('dayjs');
+const { fn1, cb0, cb1, cb2 } = require('./middleware');
+
+/* 
+express.Router
+使用express.Router该类创建模块化、可安装的路由处理程序。
+实例是一个Router完整的中间件和路由系统；因此，它通常被称为“迷你应用程序”。
+[快速路由](https://expressjs.com/en/guide/routing.html)
+*/
+
+const router = express.Router();
+
+// middleware that is specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+
+router.get('/', function (req, res, next) {
+  /* 
+   全局的中间件函数:函数requestTime
+   给req添加一个requestTime属性
+   */
+  const hitTimeStamp = _.get(req, 'requestTime') || Date.now();
+  const requestTime = dayjs(hitTimeStamp).format('YYYY-MM-DD HH:mm:ss');
+
+  res.status(200).json({
+    success: 'ok',
+    data: { dog: 1 },
+    requestTime,
+    a: req.a,
+  });
+});
+
+// [cb0, cb1, cb2] 一组回调函数可以处理路由
+router.get('/name', [cb0, cb1, cb2]);
+
+router.get('/type/:id', [fn1], function (req, res, next) {
+  res.status(200).json({
+    success: 'ok',
+    id: req.params.id,
+  });
+});
+
+module.exports = router;

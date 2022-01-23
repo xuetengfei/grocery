@@ -1,0 +1,16 @@
+### 
+GET http://localhost:4444/dog
+
+### 
+GET http://localhost:4444/dog/type/123
+
+
+###
+GET http://localhost:4444/dog/name
+
+###
+GET http://localhost:4444/nothing
+
+
+### GET http://localhost:4444/### 
+GET http://localhost:4444/test
