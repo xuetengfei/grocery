@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
+const mysql = require('mysql');
+// const csurf = require('csurf');
+
 const {
   affixionRequestTime,
   logErrors,
@@ -12,6 +15,7 @@ const {
   errorHandler,
   validateCookies,
 } = require('./appMiddleware');
+
 const app = express();
 const dog = require('./control/dog');
 
@@ -74,9 +78,25 @@ app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
 
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'dbuser',
+  password: 's3kreee7',
+  database: 'my_db',
+});
+
+// connection.connect();
+// connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+//   if (err) throw err;
+//   console.log('The solution is: ', rows[0].solution);
+// });
+
+// connection.end();
+
 const server = app.listen(4444, function () {
   console.log('start in 4444');
 });
+
 process.on('SIGTERM', () => {
   debug('SIGTERM signal received: closing HTTP server');
   server.close(() => {
