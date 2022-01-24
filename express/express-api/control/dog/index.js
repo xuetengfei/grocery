@@ -15,8 +15,15 @@ const router = express.Router();
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
   console.log('Time: ', Date.now());
+  // if (!req.headers['x-auth']) return next('router');
+  // 要跳过路由器的其余中间件功能，请调用next('router') 以将控制权从路由器实例传回。
+  // 这里就匹配到了通配符 返回 message:404
   next();
 });
+// router.use(function timeLog(req, res, next) {
+//   console.log('dog-cb2');
+//   next();
+// });
 
 router.get('/', function (req, res, next) {
   /* 
