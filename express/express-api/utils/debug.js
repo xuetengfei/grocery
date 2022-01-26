@@ -1,15 +1,7 @@
 const debug = require('debug');
 
-const debugInfo = debug('INFO');
-const debugHIT = debug('HIT');
-const debugDogMiddleware = debug('Dog Middleware');
-const debugAPPMiddleware = debug('APP Middleware');
-const debugERROR = debug('error');
-
-module.exports = {
-  debugInfo,
-  debugHIT,
-  debugDogMiddleware,
-  debugAPPMiddleware,
-  debugERROR,
-};
+exports.debugInfo = debug('INFO');
+exports.debugHIT = debug('HIT');
+exports.debugDogMiddleware = debug('Dog Middleware');
+exports.debugAPPMiddleware = debug('APP Middleware');
+exports.debugERROR = debug('error');

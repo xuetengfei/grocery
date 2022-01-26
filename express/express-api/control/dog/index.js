@@ -2,6 +2,7 @@ const express = require('express');
 const _ = require('lodash');
 const dayjs = require('dayjs');
 const { fn1, cb0, cb1, cb2 } = require('./middleware');
+const { debugDogMiddleware } = require('../../utils/debug');
 
 /* 
 express.Router
@@ -14,7 +15,7 @@ const router = express.Router();
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
+  debugDogMiddleware('Time: ', Date.now());
   // if (!req.headers['x-auth']) return next('router');
   // 要跳过路由器的其余中间件功能，请调用next('router') 以将控制权从路由器实例传回。
   // 这里就匹配到了通配符 返回 message:404
