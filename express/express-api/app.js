@@ -6,8 +6,14 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
+const developmentErrorhandler = require('errorhandler');
 // const csurf = require('csurf');
+// const session = require('express-session');
+require('dotenv').config();
 
+const app = express();
+const dog = require('./control/dog');
+const { debugInfo, debugHIT } = require('./utils/debug');
 const {
   affixionRequestTime,
   logErrors,
@@ -15,9 +21,6 @@ const {
   errorHandler,
   validateCookies,
 } = require('./appMiddleware');
-
-const app = express();
-const dog = require('./control/dog');
 
 /* 使用中间件 */
 const accessLogStream = fs.createWriteStream(
@@ -57,26 +60,30 @@ app.get('/broken2', function (req, res, next) {
   });
 });
 
-// app.get('*', function (req, res) {
-//   console.log('hit:*');
-//   res.status(404).json({ message: '404' });
-// });
+app.get('*', function (req, res) {
+  debugHIT('hit:*');
+  res.status(404).json({ message: '404' });
+});
 
 // app.get('*', function (req, res, next) {
 //   console.log('hit:*');
 //   res.status(301).redirect('/not-found');
 // });
 
-app.get('*', function (req, res, next) {
-  const error = new Error();
-  error.statusCode = 301;
-  error.reson = `${req.ip} tried to access ${req.originalUrl}`;
-  next(error);
-});
+// app.get('*', function (err, req, res, next) {
+// const error = new Error();
+// error.statusCode = 301;
+// error.reson = `${req.ip} tried to access ${req.originalUrl}`;
+// next(err);
+// });
 
 app.use(logErrors);
 app.use(clientErrorHandler);
-app.use(errorHandler);
+if (process.env.NODE_ENV === 'development') {
+  app.use(developmentErrorhandler());
+} else {
+  app.use(errorHandler);
+}
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -94,7 +101,7 @@ const connection = mysql.createConnection({
 // connection.end();
 
 const server = app.listen(4444, function () {
-  console.log('start in 4444');
+  debugInfo('start in 4444');
 });
 
 process.on('SIGTERM', () => {

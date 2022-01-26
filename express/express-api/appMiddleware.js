@@ -1,3 +1,5 @@
+const { debugERROR } = require('./utils/debug');
+
 // 添加请求时间
 exports.affixionRequestTime = function (req, res, next) {
   req.requestTime = Date.now();
@@ -5,7 +7,7 @@ exports.affixionRequestTime = function (req, res, next) {
 };
 
 exports.clientErrorHandler = function (err, req, res, next) {
-  console.log('clientErrorHandler');
+  debugERROR('clientErrorHandler');
   if (req.xhr) {
     res.status(500).send({ error: 'Something failed!' });
   } else {
@@ -13,12 +15,12 @@ exports.clientErrorHandler = function (err, req, res, next) {
   }
 };
 exports.errorHandler = function (err, req, res, next) {
-  console.log('errorHandler');
+  debugERROR('errorHandler');
   res.status(500).json({ msg: 'errorHandler', err: err.reson || err });
 };
 
 exports.logErrors = function (err, req, res, next) {
-  console.log('logErrors');
+  debugERROR('logErrors');
   next(err);
 };
 

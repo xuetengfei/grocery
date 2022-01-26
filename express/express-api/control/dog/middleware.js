@@ -1,20 +1,21 @@
 /* 
 GET http://localhost:4444/dog/type/123
 */
+const { debugDogMiddleware } = require('../../utils/debug');
 
 exports.fn1 = function fn(req, res, next) {
-  console.log('ID:', req.params.id);
-  console.log('middleware:fn1 was hitted ');
+  debugDogMiddleware('ID:', req.params.id);
+  debugDogMiddleware('middleware:fn1 was hitted ');
   next();
 };
 
 exports.cb0 = function (req, res, next) {
-  console.log('Request URL:CB0', req.originalUrl);
+  debugDogMiddleware('Request URL:CB0', req.originalUrl);
   next();
 };
 
 exports.cb1 = function (req, res, next) {
-  console.log('Request Type:CB1', req.method);
+  debugDogMiddleware('Request Type:CB1', req.method);
   next();
 };
 
