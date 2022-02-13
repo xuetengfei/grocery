@@ -1,6 +1,10 @@
 const { log } = require('./utils');
 
-const sum = (x, y, z) => x + y + z;
+// const log = params => console.trace(params);
+const sum = (x, y, z) => {
+  console.trace();
+  return x + y + z;
+};
 
 {
   const curry = (fn, need = fn.length, ...args) =>

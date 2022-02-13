@@ -1,4 +1,6 @@
-const { divider, log } = require('./utils');
+const { divider } = require('./utils');
+
+const log = params => console.trace(params);
 
 {
   // 1

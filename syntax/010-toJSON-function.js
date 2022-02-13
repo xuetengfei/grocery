@@ -10,13 +10,15 @@ const O = {
 };
 log(JSON.stringify(O)); // 10
 
-// https://sequelize.org/v7/manual/model-instances.html
-
 // 尝试直接将模型实例记录到日志console.log会产生很多混乱，
 // 因为 Sequelize 实例附加了很多东西。相反，您可以使用该.toJSON()方法
 // （顺便说一下，它会自动保证实例被JSON.stringify很好地编辑）。
 
-const jane = await User.create({ name: 'Jane' });
+// const jane = await User.create({ name: 'Jane' });
 // console.log(jane); // Don't do this
-console.log(jane.toJSON()); // This is good!
-console.log(JSON.stringify(jane, null, 4)); // This is also good!
+// console.log(jane.toJSON()); // This is good!
+// console.log(JSON.stringify(jane, null, 4)); // This is also good!
+
+const function2 = () => console.trace();
+const function1 = () => function2();
+function1();

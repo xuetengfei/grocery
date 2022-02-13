@@ -1,3 +1,5 @@
+// [Method Chaining in JavaScript](https://x-team.com/blog/javascript-method-chaining/)
+
 {
   const food = [
     { name: 'Banana', type: 'fruit' },
@@ -116,5 +118,3 @@
 
   requests.getUser().then(() => requests.registerAction());
 }
-
-// [Method Chaining in JavaScript](https://x-team.com/blog/javascript-method-chaining/)

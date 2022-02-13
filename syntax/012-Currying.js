@@ -72,6 +72,7 @@ const { log } = require('./utils');
 
       if (args.length >= 3) {
         return args.slice(0, 3).reduce(function (acc, next) {
+          console.trace();
           return acc + next;
         }, 0);
       }

@@ -19,9 +19,8 @@ Reflect.setPrototypeOf(target, prototype)
 {
   const o = { weather: 'sun' };
 
-  console.log('weather' in o);
-
-  console.log(Reflect.has(Object, 'assign'));
+  // console.log('weather' in o);
+  // console.log(Reflect.has(Object, 'assign'));
 }
 
 {
@@ -42,4 +41,7 @@ Reflect.setPrototypeOf(target, prototype)
   });
 
   loggedObj.weather;
+
+  console.log('weather' in o);
+  console.log(Reflect.has(Object, 'assign'));
 }
