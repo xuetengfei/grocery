@@ -111,37 +111,3 @@ const trace = params => console.trace(params);
   log(sum(1, 2)); // 30
   log(proxy1(1, 2)); // 1
 }
-
-{
-  // 实现单例设计模式
-  // makes a singleton proxy for a constructor function
-  function makeSingleton(func) {
-    let instance,
-      handler = {
-        construct: function (target, args) {
-          if (!instance) {
-            instance = new func();
-          }
-          return instance;
-        },
-      };
-    return new Proxy(func, handler);
-  }
-
-  // 以这个为 constructor 为例
-  function Test() {
-    this.value = 0;
-  }
-  // 普通创建实例
-  const t1 = new Test(),
-    t2 = new Test();
-  t1.value = 123;
-  console.log('Normal:', t2.value); // 0 - 因为 t1、t2 是不同的实例
-
-  // 使用 Proxy 来 trap 构造函数, 完成单例模式
-  const TestSingleton = makeSingleton(Test),
-    s1 = new TestSingleton(),
-    s2 = new TestSingleton();
-  s1.value = 123;
-  console.log('Singleton:', s2.value); // 123 - 现在 s1、s2 是相同的实例。
-}

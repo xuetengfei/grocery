@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FileReader 上传预览</title>
+  </head>
+  <body>
+    <input type="file" class="file" name="file" multiple="multiple" />
+    <img src="" alt="" />
+    <script>
+      /*
+       * 将file对象转化为base64编码
+       * file  目标file对象
+       */
+      function previewFile(file) {
+        let reader;
+        if (file) {
+          // 创建流对象
+          reader = new FileReader();
+          reader.readAsDataURL(file);
+        }
+        // 捕获 转换完毕
+        reader.onload = function (e) {
+          // 转换后的base64就在e.target.result里面,直接放到img标签的src属性即可
+          console.log('e.target.result', e.target.result);
+          document.querySelector('img').src = e.target.result;
+        };
+      }
+      document.querySelector('.file').addEventListener('change', function (e) {
+        //1.可以通过this拿到这个file的DOM元素
+        console.log(this);
+        //1.  e 函数事件参数对象中也有这个file的DOM元素对象。使用e.target也可以直接拿到
+        console.log(e.target);
+        //对开发人员屏蔽，所以直接 必须调用这个文件的DOM对象的files属性，返回一个数组
+        let files = e.target.files;
+        // previewFile(e);
+        console.log(files);
+        // console.log(files.item(0))
+        // console.log(files[0])
+        previewFile(files[0]);
+        // 判断一手是否有文件
+        if (!files.length) return;
+        // 上传文件 创建FormData
+        let formData = new FormData();
+        // upFile就是后台接收的key
+        formData.append('upFile', files[0], files[0].name);
+        console.log('formData', formData);
+        // 将formdata发送到后台即可
+        // 我用的 axios.post('url', formData)
+      });
+    </script>
+  </body>
+</html>
