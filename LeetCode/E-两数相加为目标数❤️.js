@@ -33,32 +33,18 @@
 const nums = [2, 11, 7, 15],
   target = 9;
 
-{
-  function fn(array, target) {
-    let temp = [];
-    for (let index = 0; index < array.length; index++) {
-      const cur = array[index];
-      if (cur >= target) continue;
-      const l = cur;
-      const r = target - l;
-      if (array.includes(r)) {
-        temp.push([index, array.indexOf(r)]);
-      }
+function fn(array, target) {
+  const R = {};
+  for (let index = 0; index < array.length; index++) {
+    const item = array[index];
+    const rest = target - item;
+    if (R[rest] !== undefined) {
+      return [index, R[rest]];
     }
-    return temp;
+    R[item] = index;
   }
-
-  const r = fn(nums, target);
-  console.log('r', r);
+  return null;
 }
 
-{
-  function fn(array, target) {
-    return array
-      .map((v, idx) => [idx, array.indexOf(target - v)])
-      .find(i => i.every(a => a !== -1));
-  }
-
-  const r = fn(nums, target);
-  console.log('r', r);
-}
+const r = fn(nums, target);
+console.log('r', r);
