@@ -55,6 +55,7 @@ const position: Position = 'UP';
 
 interface Shape {
   color: string;
+  p: Position;
 }
 
 interface PenStroke {

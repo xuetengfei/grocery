@@ -1,38 +1,101 @@
 const { divider, log } = require('./utils');
 
 {
-  const o = [
-    {
-      key: 'name',
-      value: 'apple',
-    },
-    {
-      key: 'age',
-      value: 1,
-    },
-    {
-      key: 'from',
-      value: '数据平台',
-    },
-  ];
+  // `delay`毫秒后执行resolve
+  const delay = timeout =>
+    new Promise(resolve => setTimeout(() => resolve(timeout), timeout));
 
-  const fn = arr =>
-    arr.reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {});
+  const tasks = [delay(1), Promise.reject('abc'), delay(64), delay(128)];
 
-  console.log(fn(o));
+  console.time('TEST');
+  // 所有promise变为resolve后程序退出
+  Promise.all(tasks)
+    .then(values => {
+      console.timeEnd('TEST');
+      console.log(values);
+    })
+    .catch(err => console.log('err', err)); // abc
 }
+return;
 divider();
 {
-  function filterArr(arr) {
-    // 这里写下你的代码
-    return arr.filter(v => {
-      return arr.filter((v, idx) => arr.indexOf(v) == idx);
-    });
+  class BinarySearchTree {
+    constructor() {
+      this.root = null; // 根节点
+    }
+    _createNode(key) {
+      const init = Object.create(null);
+      init.key = key;
+      init.left = null;
+      init.right = null;
+      return init;
+    }
+    insert(key) {
+      const newNode = this._createNode(key);
+      if (this.root === null) {
+        // 如果此时没有root 就把当前插入的node 作为root
+        this.root = newNode;
+      } else {
+        // 否则根据 key值往下比较 左小 右大
+        this.insertNode(this.root, newNode);
+      }
+    }
+    insertNode(node, newNode) {
+      // 插入比较规则
+      if (newNode.key < node.key) {
+        if (node.left === null) {
+          node.left = newNode;
+          return;
+        }
+        this.insertNode(node.left, newNode);
+      } else {
+        if (node.right === null) {
+          node.right = newNode;
+          return;
+        }
+        this.insertNode(node.right, newNode);
+      }
+    }
+    // 搜索最小值
+    min() {
+      return this.minNode(this.root);
+    }
+    minNode(node) {
+      if (node) {
+        while (node && node.left !== null) {
+          node = node.left;
+        }
+        return node.key;
+      }
+      return null;
+    }
+    // 搜索最大值
+    max() {
+      return this.maxNode(this.root);
+    }
+    maxNode(node) {
+      if (node) {
+        while (node && node.right !== null) {
+          node = node.right;
+        }
+        return node.key;
+      }
+      return null;
+    }
+    // 搜索特定值
+    search(key) {
+      return this.searchNode(this.root, key); // 从根节点开始查找
+    }
   }
-  // [ 2, 3, 4, 1, 1 ]
-  console.log(filterArr([1, 2, 3, 4, 2, 3, 4, 1, 5, 6, 23, 32, 1]));
-}
 
+  let nodes = [8, 3, 10, 1, 6, 11, 2, 9, 12];
+  let tree = new BinarySearchTree();
+  nodes.forEach(key => tree.insert(key));
+  console.log('tree', JSON.stringify(tree, null, 2));
+}
+{
+}
+divider();
 {
   (function () {
     const a = (b = 1);
@@ -117,28 +180,6 @@ divider();
   fn.b.call(null);
 }
 {
-  const addTwoNumbers = function (l1, l2) {
-    const n1 = l1.reduce((acc, cur, idx) => {
-      return acc + Math.pow(10, idx) * cur;
-    }, 0);
-    const n2 = l2.reduce((acc, cur, idx) => {
-      return acc + Math.pow(10, idx) * cur;
-    }, 0);
-    return [...(n1 + n2 + '')].reverse().map(v => Number(v));
-  };
-  console.log(addTwoNumbers([9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 9])); // [8,9,9,9,0,0,0,1]
-  console.log(addTwoNumbers([2, 4, 3], [5, 6, 4])); // [7,0,8]
-}
-
-// 输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
-// 输出：[8,9,9,9,0,0,0,1]
-
-// 输入：l1 = [2,4,3], l2 = [5,6,4]
-// 输出：[7,0,8]
-// 解释：342 + 465 = 807.
-
-divider();
-{
   console.log(!![] == true); // true
   console.log([] == false); // true
 }
@@ -221,17 +262,6 @@ divider();
   console.log(formatFileSize(112233445566)); // "104.53GB"
 }
 
-divider();
-{
-  function sumFloat(a, b) {
-    const MIN = Math.min(a, b).toString();
-    const SIZE = MIN.slice(MIN.indexOf('.') + 1).length;
-    const ZOOMIN = Math.pow(10, SIZE);
-    return (a * ZOOMIN + b * ZOOMIN) / ZOOMIN;
-  }
-  console.log(sumFloat(0.1, 0.2)); // 0.3
-  console.log(0.1 + 0.2); // 0.30000000000000004
-}
 divider();
 function Person(name) {
   this.name = name;
