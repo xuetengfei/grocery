@@ -26,8 +26,8 @@ function findTailNodeByNumber(head, num) {
   const node = {};
   node.value = val;
   node.next = map.get(val);
-  console.log('temp', temp);
-  console.log('map', map);
+  // console.log('temp', temp);
+  // console.log('map', map);
   return node;
 }
 
