@@ -5,7 +5,7 @@ class Stack {
   }
   add(value) {
     if (this.minValue) {
-      this.minValue = Math.min.call(this, this.minValue, value);
+      this.minValue = Math.min(this.minValue, value);
     } else {
       this.minValue = value;
     }
