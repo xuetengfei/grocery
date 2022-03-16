@@ -15,12 +15,12 @@ function f(l, sum) {
   const r = [];
   const a = [];
   while (l.length) {
+    console.log('l', l);
     const el = l[0];
     a.push(el);
     const end = calc(a);
     if (end === sum) {
       r.push([...a]);
-
       a.length = 0;
     }
     if (end > sum) {
