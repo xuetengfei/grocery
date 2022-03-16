@@ -13,10 +13,6 @@ function fn(arr, num) {
     if (s === num) {
       temp.push([arr[l], arr[r]]);
     }
-    if (s > num) {
-      const subArray = arr.slice(0, l);
-      console.log('subArray', subArray);
-    }
     l += 1;
     r -= 1;
   }
