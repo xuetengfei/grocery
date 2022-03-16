@@ -8,4 +8,4 @@ function fn(arr) {
 const a = [1, 22, 11, 3, 32, 321];
 
 const r = fn(a);
-console.log('r', r);
+console.log('r', r); // 11122321323
