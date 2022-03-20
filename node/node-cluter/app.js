@@ -8,7 +8,7 @@ const numCPUs = os.cpus().length;
 
 app.get('/', function (_req, res) {
   res.json({ success: true, pid });
-  // cluster.worker.kill();
+  cluster.worker.kill();
 });
 
 if (cluster.isMaster) {
