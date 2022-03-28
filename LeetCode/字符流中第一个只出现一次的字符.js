@@ -5,24 +5,17 @@
 
 # */
 
-function fn(s) {
-  const map = {};
-  for (let index = 0; index < s.length; index++) {
-    const i = s[index];
-    if (map[i]) {
-      map[i] = map[i] + 1;
-    } else {
-      map[i] = 1;
+function fn(str) {
+  const array = [...str];
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    const L = array.indexOf(element);
+    const R = array.lastIndexOf(element);
+    console.log('R', R);
+    if (L === R) {
+      return element;
     }
   }
-  for (const key in map) {
-    const val = map[key];
-    if (val == 1) {
-      return key;
-    }
-  }
-  return null;
 }
-
-const r = fn('google');
+const r = fn('goxoeglle');
 console.log(r);
