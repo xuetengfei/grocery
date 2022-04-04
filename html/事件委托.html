@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .highlight {
+        background: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="table">
+      <tr>
+        <th colspan="3">Table</th>
+      </tr>
+      <tr>
+        <td><strong>strong</strong><br />11</td>
+        <td><strong>strong</strong><br />12</td>
+        <td><strong>strong</strong><br />13</td>
+      </tr>
+      <tr>
+        <td><strong>strong</strong><br />21</td>
+        <td><strong>strong</strong><br />22</td>
+        <td><strong>strong</strong><br />33</td>
+      </tr>
+      <tr>
+        <td><strong>strong</strong><br />31</td>
+        <td><strong>strong</strong><br />32</td>
+        <td><strong>strong</strong><br />33</td>
+      </tr>
+    </table>
+    <script>
+      let selectedTd;
+      //   table.onclick = function (event) {
+      //     let target = event.target; // 在哪里点击的？
+      //     console.log('target', target);
+      //     console.log('target', target.tagName);
+      //     if (target.tagName != 'TD') return; // 不在 TD 上？那么我们就不会在意
+      //     highlight(target); // 高亮显示它
+      //   };
+
+      table.onclick = function (event) {
+        let td = event.target.closest('td'); // (1)
+        console.log('target', event.target);
+        console.log('td', td);
+        if (!td) return; // (2)
+        if (!table.contains(td)) return; // (3)
+        highlight(td); // (4)
+      };
+
+      function highlight(td) {
+        if (selectedTd) {
+          // 移除现有的高亮显示，如果有的话
+          selectedTd.classList.remove('highlight');
+        }
+        selectedTd = td;
+        selectedTd.classList.add('highlight'); // 高亮显示新的 td
+      }
+    </script>
+  </body>
+</html>
+
+<!-- [事件委托](https://zh.javascript.info/event-delegation)  -->
