@@ -1,5 +1,4 @@
 function filterArr(arr) {
-  // 这里写下你的代码
   return arr.filter(v => {
     return arr.filter((v, idx) => arr.indexOf(v) == idx);
   });
