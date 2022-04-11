@@ -2,7 +2,6 @@ const { log } = require('./utils');
 
 // const log = params => console.trace(params);
 const sum = (x, y, z) => {
-  console.trace();
   return x + y + z;
 };
 
@@ -21,4 +20,18 @@ const sum = (x, y, z) => {
     fn.length === 0 ? fn() : (...args) => curry(fn.bind(null, ...args));
 
   log(curry(sum)(1)(2)(3)); // 6
+}
+
+{
+  function curry(fn) {
+    let judge = (...args) => {
+      if (args.length == fn.length) return fn(...args);
+      return (...arg) => judge(...args, ...arg);
+    };
+    return judge;
+  }
+
+  console.log(curry(sum)(1)(2)(3)); // 6
+  console.log(curry(sum)(1, 2)(3)); // 6
+  console.log(curry(sum)(1)(2, 3)); // 6
 }

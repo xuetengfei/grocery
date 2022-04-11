@@ -1,7 +1,4 @@
 {
-  // 对象扁平化
-}
-{
   var name = 'window';
 
   function Person(name) {
