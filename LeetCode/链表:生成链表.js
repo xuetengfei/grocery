@@ -28,16 +28,14 @@ function generateLinklist(arr) {
 // console.log(JSON.stringify(head, null, 2)); // 1 -> 2 -> 3 -> 4
 
 const list = {
-  head: {
-    value: 6,
+  value: 6,
+  next: {
+    value: 10,
     next: {
-      value: 10,
+      value: 12,
       next: {
-        value: 12,
-        next: {
-          value: 3,
-          next: null,
-        },
+        value: 3,
+        next: null,
       },
     },
   },
