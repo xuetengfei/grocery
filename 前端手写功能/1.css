@@ -1,0 +1,26 @@
+/* stylelint-disable */
+:root {
+  --rpx: calc(1rem / 16);
+  --rs: calc(1rem * 0.25);
+}
+
+.usage {
+  padding-inline: 4 --rs;
+}
+
+.usage {
+  padding-inline: calc(4 * (var(--rs)));
+}
+
+.a {
+  width: 100vw;
+  height: 30px;
+}
+
+.a .b {
+  background-color: antiquewhite;
+}
+
+.a .c {
+  font-size: calc(22 * (var(--rpx)));
+}
