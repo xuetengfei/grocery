@@ -4,13 +4,46 @@
   background-color: white;
   border: 1px solid #333;
   border-radius: 0.25em;
-  max-width: 300px;
   position: relative;
+  width: 200px;
 }
 
 .my-toast::after {
-  content: "\00D7";
+  content: '\00D7';
   position: absolute;
   top: 2px;
   right: 5px;
+  user-select: none;
+}
+
+.my-toast-container {
+  position: fixed;
+  margin: 10px;
+  max-width: 300px;
+  background-color: rgb(253 211 211);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.my-toast-container[data-position^='top-'] {
+  top: 0;
+}
+
+.my-toast-container[data-position$='-right'] {
+  right: 0;
+}
+
+.my-toast-container[data-position^='bottom-'] {
+  bottom: 0;
+}
+
+.my-toast-container[data-position$='-left'] {
+  left: 0;
+}
+
+.my-toast-container[data-position$='-center'] {
+  left: 50%;
+  transform: translateX(-50%);
 }
