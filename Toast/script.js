@@ -1,3 +1,7 @@
 import Toast from './Toast.js';
 
-new Toast({ position: 'left', text: 'toast content' });
+const x = new Toast({ position: 'left', text: 'toast content' });
+
+setTimeout(function () {
+  x.remove();
+}, 10000);

@@ -28,6 +28,10 @@ export default class Toast {
   }
   show() {}
   update() {}
-  remove() {}
-  show() {}
+  remove() {
+    const container = this.#toastElement.parentElement;
+    this.#toastElement.remove();
+    if (container.hasChildNodes()) return;
+    container.remove();
+  }
 }
