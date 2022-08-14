@@ -1,0 +1,96 @@
+@width: 10px;
+@height: @width + 10px;
+
+// Variables
+#header {
+  width: @width;
+  height: @height;
+}
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+
+#menu a {
+  color: #111;
+  .bordered();
+}
+
+.post a {
+  color: red;
+  .bordered();
+}
+
+.boxShadow() {
+  box-shadow+: inset 0 0 10px #555;
+  font-size: 30px;
+}
+.main {
+  .boxShadow();
+  box-shadow+: 0 0 20px black;
+}
+
+.Animation() {
+  transform+_: scale(2);
+}
+.main {
+  .Animation();
+  transform+_: rotate(15deg);
+}
+.average(@x, @y) {
+  @average: ((@x + @y) / 2);
+}
+
+div {
+  .average(20px, 50px); // 调用 方法
+  padding: @average; // 使用返回值
+}
+
+.animation {
+  transition: all 0.3s ease-out;
+  .hide {
+    transform: scale(0);
+  }
+}
+
+// extend
+#main1 {
+  &:extend(.animation);
+}
+#con1 {
+  &:extend(.animation .hide);
+}
+
+each(range(10),{
+    .span@{value} { width: @value * 1%; }
+});
+
+each(range(1px, 10px, 1), {
+  .mb@{index} {
+		margin-bottom:@value;
+  }
+});
+
+@colors: #ed5565, #a0d468, #f6bb42, #5d9cec;
+@names: error, success, attention, info;
+@length: length(@colors);
+
+.alert-variation(@names; @colors; @index)
+  when
+  (iscolor(extract(@colors, @index)))
+  and
+  (@index > 0) {
+  .alert-variation(@names; @colors; (@index - 1)); // decrement.
+  @name: extract(@names, @index);
+  @color: extract(@colors, @index);
+  .alert-@{name} {
+    border-color: darken(@color, 10%);
+    color: darken(@color, 30%);
+    background-color: @color;
+  }
+}
+
+.alert-variation(@names; @colors; @length);
+
+// 1. [Less 快速入门 | Less.js 中文文档 - Less 中文网](https://less.boot.com/)
+// 2. [Less Preview (online playground)](https://less.org/less-preview/#eyJjb2RlIjoiZWFjaChyYW5nZSgxcHgsIDEwcHgsIDEpLCB7XG4gIC5tYkB7aW5kZXh9IHtcblx0XHRtYXJnaW4tYm90dG9tOkB2YWx1ZTtcbiAgfVxufSk7IiwiYWN0aXZlVmVyc2lvbiI6IjQuMS4zIn0=)
