@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #a {
+        height: 1000px;
+        background: #eee;
+      }
+      #box {
+        height: 1000px;
+        background: salmon;
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="a"></div>
+    <div id="box">box</div>
+    <script>
+      var element = document.getElementById('box');
+      setTimeout(function () {
+        // element.scrollIntoView();
+        element.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }, 100);
+      //   element.scrollIntoView(false);
+      //   element.scrollIntoView({ block: 'end' });
+    </script>
+  </body>
+</html>
