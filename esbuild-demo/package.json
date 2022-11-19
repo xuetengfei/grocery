@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild app.jsx --bundle --outfile=out.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "esbuild app.jsx --bundle --outfile=out.js"
   },
-  "keywords": [],
+  "keywords": [
+    "esbuild"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
