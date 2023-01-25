@@ -1,5 +1,0 @@
-### 
-GET http://localhost:3111/users
-
-###
-GET http://localhost:3111/user/1

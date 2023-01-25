@@ -1,7 +1,6 @@
-/* stylelint-disable */
 :root {
-  --rpx: calc(1rem / 16);
-  --rs: calc(1rem * 0.25);
+  --rpx:calc(1rem / 16);
+  --rs: calc(1rem * .25);
 }
 
 .usage {
@@ -16,11 +15,9 @@
   width: 100vw;
   height: 30px;
 }
-
 .a .b {
   background-color: antiquewhite;
 }
-
 .a .c {
   font-size: calc(22 * (var(--rpx)));
-}
+}/*# sourceMappingURL=1.css.map */
